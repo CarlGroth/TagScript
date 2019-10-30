@@ -36,3 +36,8 @@ class test_strf_functionality(TestCase):
         t = time.gmtime()
         curr_time = time.strftime("%c", t)
         self.assertEqual(self.engine.Process("strf{%c}"), curr_time)
+
+    def test_cuddled_up_variables(self):
+        t = time.gmtime()
+        huggle_wuggle = time.strftime("%y%y%y%y")
+        self.assertEqual(self.engine.process("strf{%y%y%y%y}"), huggle_wuggle)
